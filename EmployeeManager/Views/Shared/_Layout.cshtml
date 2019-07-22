@@ -4,38 +4,167 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <link rel="icon" type="image/png" href="~/Content/Images/luizalabs-favicon.png">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <style type="text/css">
+        .left-nav-close { display:none; }
+        .left-nav-close { position: absolute; top: 0px; right: 0px; color:#fff !important; z-index:1000; cursor:pointer; }
+        .navbar-toggler-left { display:none; }
+        .navbar-blue { background-color: #2e4399; }
+        .navbar-brand { display:none !important; }
+        @@media (max-width: 1199.98px) {
+            .left-nav-close { display:block; }
+            .navbar-toggler-left { display:inline-block; }
+            .navbar-brand { display:inline-block !important; }
+        }
+    </style>
+
+
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+
+    <header>
+        <!-- Navbar -->
+        <!-- navbar fixed-top navbar-expand-lg scrolling-navbar blue-gradient -->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light scrolling-navbar navbar-blue">
+            <div class="container-fluid">
+
+                <button type="button" class="btn btn-sm btn-link navbar-toggler-left button-collapse white-text" data-activates="slide-out">
+                    <i class="fas fa-bars fa-2x white-text"></i> 
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+                <!-- Brand -->
+                <a class="navbar-brand waves-effect" href="@Url.Action("Index","Home")" target="_blank">
+                    <strong class="white-text">Employee Manager</strong>
+                </a>
+
+                <!-- Collapse -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars white-text"></i> 
+                </button>
+
+                <!-- Links -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                
+                    <!-- Left -->
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect white-text" href="@Url.Action("Index", "Home", new { area = "" }, null)"> 
+                                Home
+                            </a>
+                        </li>   
+                    </ul>
+
+                    <!-- Right -->
+                    <ul class="navbar-nav nav-flex-icons">
+                        <li class="nav-item">
+                            <a href="@Url.Action("Api","Home")" class="nav-link waves-effect white-text">
+                                <i class="fas fa-plug mr-2"></i>API
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://github.com/rafaelaca/LuizaLabsEmployeeManager" class="nav-link waves-effect white-text" target="_blank">
+                                <i class="fab fa-github mr-2"></i>GitHub
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="javascript:;" class="nav-link waves-effect white-text" data-toggle="modal" data-target="#aboutModal">
+                                <i class="fas fa-question mr-2"></i>About
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
-                </ul>
+        </nav>
+        <!-- Navbar -->
+
+        <!-- Sidebar -->
+        <div  class="sidebar-fixed position-fixed blue-gradient side-nav fixed">
+
+            <button type="button" class="btn btn-link left-nav-close"><i class="fas fa-times white-text"></i></button>
+
+            <a class="logo-wrapper waves-effect">
+                <img src="@Url.Content("~/Content/Images/luizalabs-white.png")" alt="Logo LuizaLabs" />
+                <small class="white-text"><strong>Employee Manager</strong></small>
+            </a>
+
+         
+            <div id="MainLeftMenu" class="list-group panel list-group-flush">
+
+                <a href="#menuEmployeeItems" class="list-group-item waves-effect" data-toggle="collapse" data-parent="#MainLeftMenu">Employees <i class="fa fa-caret-down"></i></a>
+                <div class="collapse" id="menuEmployeeItems">
+                    <a href="@Url.Action("Create","Employees")" class="list-group-item"  data-parent="#menuEmployeeItems"> <i class="fas fa-plus"></i> New</a>
+                    <a href="@Url.Action("Index","Employees")" class="list-group-item"  data-parent="#menuEmployeeItems"> <i class="fas fa-list"></i> List</a>
+                </div> 
             </div>
+
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+        <!-- Sidebar -->
+
+        <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="aboutModalLabel">About</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Developed by Rafael Augusto</p>
+                        <p>
+                            <a class="" href="mailto:rafael.aca@gmail.com"><i class="fas fa-envelope"></i> rafael.aca@gmail.com</a>
+                        </p>
+                        <p>
+                            <a class="" href="https://api.whatsapp.com/send?phone=5511997440529"><i class="fab fa-whatsapp"></i> Whatsapp</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </header>
+
+    <main class="pt-5 mx-lg-5">
+
+        <div class="container-fluid mt-5">
+            @Html.LayoutMessage()
+                
+            @RenderBody()            
+        </div>
+    </main>
+
+    
+
+    <footer class="page-footer font-small blue lighten-5 fixed-bottom">
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3 black-text">
+            <p>&copy; @DateTime.Now.Year - Luiza Labs Employee Manager</p>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/js")
+    @Scripts.Render("~/scripts/utils.js")
+
+    <script type="text/javascript">
+        // SideNav Button Initialization
+        $(".button-collapse").click(function () {
+            $(".side-nav").toggle("slide", { direction: "left"}, 500);
+        });
+        $(".left-nav-close").click(function () {
+            $(".side-nav").toggle("slide");
+        })
+    </script>
+
     @RenderSection("scripts", required: false)
+
+    
 </body>
 </html>

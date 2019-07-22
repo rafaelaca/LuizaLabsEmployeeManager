@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Api";
+}
+@{
+    string m_EmployeeManagerAPI = System.Configuration.ConfigurationManager.AppSettings["EmployeeManagerApiUrl"];
+}
+<iframe id="iframeContent" src="@(m_EmployeeManagerAPI.TrimEnd('/') + "/Help")" width="100%" height="100%" frameborder="0" style="overflow:auto;"></iframe>
+
+
+@section scripts{
+    <script type="text/javascript">
+        window.addEventListener('message', function (e) {
+            var $iframe = jQuery("#iframeContent");
+            var eventName = e.data[0];
+            var data = e.data[1];
+            switch (eventName) {
+                case 'setHeight':
+                    $iframe.height(data);
+                    break;
+            }
+        }, false);
+        
+    </script>    
+}

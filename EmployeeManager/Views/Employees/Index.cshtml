@@ -1,0 +1,67 @@
+﻿@model PagedData<EmployeeManager.Models.Employee>
+@{
+    ViewBag.Title = "Employees";
+}
+
+<div class="row">
+    <div class="col-5">
+        <h2>@ViewBag.Title</h2>
+    </div>
+    <div class="col">
+        @using (Html.BeginForm("Index","Employees", FormMethod.Get))
+        { 
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="search" value="@Request.QueryString["search"]"  placeholder="Search" aria-label="Search employee" aria-describedby="btnSearch">
+                <div class="input-group-append">
+                    <button class="btn btn-sm btn-info m-0 px-3" type="submit" id="btnSearch"><i class="fas fa-search"></i></button>
+                    <a href="@Url.Action("Create", "Employees")" class="btn btn-primary btn-sm m-0 px-3">
+                        <i class="fas fa-plus"></i> <span class="d-none d-xl-inline-block d-lg-inline-block">New</span>
+                    </a>
+                </div>
+            </div>
+        }
+        
+    </div>
+    
+</div>
+
+
+
+
+@if (Model != null)
+{
+    if (Model.Data != null)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>E-mail</th>
+                    <th>Department</th>
+                    <th></th>
+                </tr>
+            </thead>
+            @foreach (var employee in Model.Data)
+            {
+                <tr>
+                    <td>@employee.name</td>
+                    <td>@employee.email</td>
+                    <td>@employee.department</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <a href="@Url.Action("Edit", "Employees", new { id = employee.id })" class="btn btn-sm btn-primary">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a href="@Url.Action("Delete", "Employees", new { id = employee.id })" class="btn btn-sm btn-danger">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </table>
+
+        @Html.Partial("_Pager", Model)
+    }
+}
+

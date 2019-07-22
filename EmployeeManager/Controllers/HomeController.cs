@@ -10,9 +10,12 @@ namespace EmployeeManager.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
-
             return View();
         }
+
+        public ActionResult Api()
+        {
+            return View();
+        }        
     }
 }

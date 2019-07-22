@@ -1,0 +1,9 @@
+﻿@model EmployeeManager.Models.Employee
+
+@{
+    ViewBag.Title = "New Employee";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@Html.Partial("_CreateOrEdit", Model)

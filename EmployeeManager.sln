@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManager", "EmployeeManager\EmployeeManager.csproj", "{702DE233-F4AF-4170-934E-52F92CA77CD7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagerAPI", "EmployeeManagerAPI\EmployeeManagerAPI.csproj", "{702DE233-F4AF-4170-934E-52F92CA77CD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagerModels", "EmployeeManagerModels\EmployeeManagerModels.csproj", "{51C631A2-A9E1-40C4-B573-10633F283503}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManager", "EmployeeManager\EmployeeManager.csproj", "{AC5A2182-ADAD-4E9C-8D68-D42B33545BA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{702DE233-F4AF-4170-934E-52F92CA77CD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{702DE233-F4AF-4170-934E-52F92CA77CD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{702DE233-F4AF-4170-934E-52F92CA77CD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51C631A2-A9E1-40C4-B573-10633F283503}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51C631A2-A9E1-40C4-B573-10633F283503}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51C631A2-A9E1-40C4-B573-10633F283503}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51C631A2-A9E1-40C4-B573-10633F283503}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC5A2182-ADAD-4E9C-8D68-D42B33545BA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC5A2182-ADAD-4E9C-8D68-D42B33545BA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC5A2182-ADAD-4E9C-8D68-D42B33545BA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC5A2182-ADAD-4E9C-8D68-D42B33545BA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
