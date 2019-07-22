@@ -409,6 +409,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="font\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
